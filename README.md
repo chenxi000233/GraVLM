@@ -16,28 +16,24 @@ This repository provides the official implementation of the paper:
 ## 📁 Project Structure
 
 ```
-GraVLM/
-├── det_json/                          # Detected object annotations (rotated bounding boxes)
-├── models/                            # Pre-trained CLIP model weights
-├── test/                              # Evaluation scripts and sample test data
-├── triples/                           # Extracted entity-relation triplets for ERG construction
-├── clip.py                            # CLIP feature extraction wrapper
-├── clip_gcn_image_feature_integration.py  # Integrate CLIP features with visual graph via GCN
-├── dataloader.py                      # Data loading pipeline (image-text pairs)
-├── evaluate.py                        # Performance evaluation (Recall@K, etc.)
-├── generate_adjacency_degree_matrices.py.ipynb  # Graph adjacency preprocessing demo
-├── infer.py                           # Inference script for retrieval testing
-├── loss.py                            # Loss functions (HGAC, contrastive, etc.)
-├── model.py                           # Core GraVLM model definition
-├── simple_tokenizer.py                # Lightweight tokenizer for textual inputs
-├── train.py                           # End-to-end training script
-├── train-t.py                         # Text graph (ERG) training script
-├── train-v.py                         # Visual graph (SOG) training script
-├── T_Graph.py                         # Textual graph construction module
-├── V_Graph.py                         # Visual graph construction module
-├── T-Graph.ipynb                      # ERG construction visualization notebook
-├── V-Graph.ipynb                      # SOG construction visualization notebook
-└── requirements.txt                   # Python dependencies
+FG-CROSS/
+├── det_json/                          # Detected object annotations
+├── models/                            # Pretrained and custom model definitions
+├── test/                              # Evaluation scripts and test data handling
+├── clip.py                            # CLIP-based feature extraction
+├── clip_gcn_image_feature_integration.py  # CLIP + GCN feature integration
+├── dataloader.py                      # Dataset loading (RSITMD, RSICD, UCM)
+├── evaluate.py                        # Evaluation metrics and retrieval scoring
+├── infer.py                           # Inference code for retrieval
+├── loss.py                            # Loss function (e.g., contrastive loss)
+├── model.py                           # Model architecture
+├── README.md                          # Project documentation
+├── requirements.txt                   # Python dependencies
+├── simple_tokenizer.py                # Tokenization utilities
+├── train.py                           # Training script
+├── V-Graph.ipynb                      # Jupyter notebook demo of graph structure
+├── V_Graph.py                         # Graph structure extraction code
+└── __init__.py                        # Package initializer
 ```
 
 ---
@@ -66,13 +62,11 @@ pip install -r requirements.txt
 
 The following publicly available remote sensing datasets are supported:
 
-| Dataset    | Description                                               | Link                                                                                                          |
-| ---------- |-----------------------------------------------------------|---------------------------------------------------------------------------------------------------------------|
-| **RS5M**   | Large-scale pretraining dataset with 5M image-text pairs  | https://github.com/om-ai-lab/RS5M                                                                             |
-| **RSITMD** | Remote Sensing Image-Text Multimodal Dataset              | [https://github.com/ucas-vg/RSITMD](https://github.com/ucas-vg/RSITMD)                                        |
-| **RSICD**  | Remote Sensing Image Captioning Dataset                   | [https://github.com/ucas-vg/RSICD-official](https://github.com/ucas-vg/RSICD-official)                        |
-| **UCM**    | UC Merced Land Use Dataset                                | [http://weegee.vision.ucmerced.edu/datasets/landuse.html](http://weegee.vision.ucmerced.edu/datasets/landuse.html) |
-
+| Dataset | Description                                  | Link |
+|---------|----------------------------------------------|------|
+| RSITMD  | Remote Sensing Image-Text Multimodal Dataset | https://github.com/ucas-vg/RSITMD |
+| RSICD   | Remote Sensing Image Captioning Dataset      | https://github.com/ucas-vg/RSICD-official |
+| UCM     | UC Merced Land Use Dataset                   | http://weegee.vision.ucmerced.edu/datasets/landuse.html |
 
 > 📌 Please download and extract the datasets. Then modify the paths in `dataloader.py` to point to the correct locations.
 
@@ -117,6 +111,11 @@ Query 5:     0.05   0.11   0.18   0.26   0.90
 ```bash
 python evaluate.py
 ```
+
+---
+
+This script verifies the fusion of CLIP and GCN features on sample data.
+
 ---
 
 ## 📜 License
@@ -125,8 +124,26 @@ This project is licensed under the MIT License.
 
 ```
 MIT License
-Anonymous
 
+Copyright (c) 2025 Xi Chen
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
 ```
 
 ---
@@ -136,9 +153,12 @@ Anonymous
 If you use this code or find our work helpful, please cite:
 
 ```bibtex
-@article{
-  title={GraVLM: A Hierarchical Graph-Aligned Vision-Language Model for Cross-Modal Retrieval in Remote Sensing},
-  author={Anonymous},
+@article{chen2025fgcross,
+  title={FG-CROSS: Cross-Modal Retrieval in Remote Sensing via Fine-Grained Spatial Representation},
+  author={Chen, Xi and others},
+  journal={Computers \& Geosciences},
+  year={2025},
+  publisher={Elsevier}
 }
 ```
 
@@ -146,4 +166,7 @@ If you use this code or find our work helpful, please cite:
 
 ## 📬 Contact
 
-Anonymous
+For questions or feedback, please contact the corresponding author:
+
+**Mr. Xi Chen**  
+📧 2024102110094@whu.edu.cn

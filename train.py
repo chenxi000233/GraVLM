@@ -7,8 +7,11 @@ from tqdm import tqdm
 import clip
 from dataloader import CLIPDataset
 from loss import triplet_loss
+from HGAC_loss import HGACLoss
 from evaluate import evaluate
 from termcolor import colored
+import V_Graph as Vg
+import T_Graph as Tg
 import clip_gcn_image_feature_integration as clip_gcn
 
 # 设置训练参数
