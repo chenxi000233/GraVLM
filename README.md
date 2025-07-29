@@ -26,6 +26,7 @@ FG-CROSS/
 ├── evaluate.py                        # Evaluation metrics and retrieval scoring
 ├── infer.py                           # Inference code for retrieval
 ├── loss.py                            # Loss function (e.g., contrastive loss)
+├── HGAC_loss.py                       # Hierarchical Graph-Aligned Contrastive Loss
 ├── model.py                           # Model architecture
 ├── README.md                          # Project documentation
 ├── requirements.txt                   # Python dependencies
